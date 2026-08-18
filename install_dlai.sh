@@ -6,7 +6,7 @@ if [ -z "$BASE_SCRIPT_DIR" ]; then # set to current if blank
     echo "DEST_DIR is empty. Setting to current folder."
     BASE_SCRIPT_DIR="`pwd`"
 fi
-SCRIPT_DIR="$BASE_SCRIPT_DIR/My_Email_Scanner_DLAI" # final target includes app
+SCRIPT_DIR="$BASE_SCRIPT_DIR/email_scanner_dlai" # final target includes app
 
 # Check if Python is installed
 if ! command -v python3 &> /dev/null; then

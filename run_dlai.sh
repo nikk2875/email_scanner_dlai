@@ -2,8 +2,8 @@
 
 # Define the directory where the code will be executed.
 # It is assumed that you have already installed the code with install.sh.
-# This script should exist on the parent folfer of the installation. 
-SCRIPT_DIR="`pwd`/My_Email_Scanner_DLAI"
+# This script should exist on the parent folder of the installation. 
+SCRIPT_DIR="`pwd`/email_scanner_dlai"
 
 
 # Run the Python script
