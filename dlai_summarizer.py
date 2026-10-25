@@ -23,16 +23,6 @@ def get_response(prompt, model, url, api_key):
     return response.choices[0].message.content
 
 
-def get_ollama_response(prompt, model):
-    """Special version for getting response from Ollama. Finally I don't use it, but may be usefull for "overthinking" models like Qwen3.5."""
-    response = ollama.chat(
-        model=model,
-        think=False,
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return response.message.content
-
-
 def summarize_email(email_data, model, url, api_key):
     """Wrapper for summarizing an email."""
 
@@ -41,8 +31,8 @@ def summarize_email(email_data, model, url, api_key):
     only the summary. This is the text:
     """
     input_prompt_for_news = """The following text is a newsletter. It contains 2 major parts. The first part is a key message 
-    by the author and the second part has news articles. Please find the news articles part and summarize it. Return only 
-    the summaries. This is the text:
+    by the author and the second part has news articles. Please find the news articles part and summarize each article briefly. 
+    Return only the summaries. This is the text:
     """
 
     body = email_data["body"]
@@ -52,8 +42,8 @@ def summarize_email(email_data, model, url, api_key):
     print(f"Using {model}...")
 
     """
-    During development, I found that if you summarize the key message of Andrew Ng and news as separate sections,
-    you get much better results. For this reason, I make 2 requests instead of 1 and combine the results.
+    During development with older models, I found that if you summarize the key message of Andrew Ng and news as separate 
+    sections, you get much better results. For this reason, I make 2 requests instead of 1 and combine the results.
     """
 
     # Produce summary for key message

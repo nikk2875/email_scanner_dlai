@@ -5,7 +5,7 @@ from dlai_scanner import connect, fetch_emails, mark_as_read
 from dlai_summarizer import summarize_email
 
 
-def dlai_scan(model='ollama', limit=5):
+def dlai_scan(model='openai', limit=1):
     # Connect to GMAIL and get the e-mails
     print(f"Connecting to Gmail as {dlai_config.GMAIL_ADDRESS}...")
     imap = connect(dlai_config.GMAIL_ADDRESS, dlai_config.GMAIL_APP_PASSWORD)
@@ -26,26 +26,10 @@ def dlai_scan(model='ollama', limit=5):
         url = None
         api_key = dlai_config.openai_api_key
         model = dlai_config.OPENAI_MODEL
-    if model == 'claude':
-        url = dlai_config.ANTHROPIC_BASE_URL
-        api_key = dlai_config.anthropic_api_key
-        model = dlai_config.ANTHROPIC_MODEL
-    if model == 'gemini':
-        url = dlai_config.GEMINI_BASE_URL
-        api_key = dlai_config.gemini_api_key
-        model = dlai_config.GEMINI_MODEL
-    if model == 'grok':
-        url = dlai_config.GROK_BASE_URL
-        api_key = dlai_config.grok_api_key
-        model = dlai_config.GROK_MODEL
-    if model == 'groq':
-        url = dlai_config.GROQ_BASE_URL
-        api_key = dlai_config.groq_api_key
-        model = dlai_config.GROQ_MODEL
-    if model == 'ollama':
-        url = dlai_config.OLLAMA_BASE_URL
-        api_key = "ollama"
-        model = dlai_config.OLLAMA_MODEL
+    if model == 'openrouter':
+        url = dlai_config.OPENROUTER_BASE_URL
+        api_key = dlai_config.openrouter_api_key
+        model = dlai_config.OPENROUTER_MODEL
 
     # Produce e-mails summaries
     results = []
@@ -93,4 +77,4 @@ def dlai_scan(model='ollama', limit=5):
 
 
 if __name__ == "__main__":
-    dlai_scan(model='claude', limit=10)
+    dlai_scan(model='openai', limit=10)
