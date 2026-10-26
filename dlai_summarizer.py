@@ -27,8 +27,8 @@ def summarize_email(email_data, model, url, api_key):
     """Wrapper for summarizing an email."""
 
     input_prompt_for_key_message = """The following text is a newsletter. It contains 2 major parts. The first part is a 
-    key message by the author and the second part has news articles. Please find the key message part and summarize it. Return 
-    only the summary. This is the text:
+    key message by the author and the second part has news articles. Please find the key message part and summarize it, 
+    but do not be brief. Return only the summary. This is the text:
     """
     input_prompt_for_news = """The following text is a newsletter. It contains 2 major parts. The first part is a key message 
     by the author and the second part has news articles. Please find the news articles part and summarize each article briefly. 
